@@ -9,4 +9,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app works!';
+
+  //Defino en el padre el manejador que se ejecutara cuando se de el evento emitido por el hijo
+  mostrarContactoSeleccionado(contacto: string): void {
+    alert(contacto);
+  }
 }
