@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { ContactoService } from './contacto.service'
+import { ContactoService } from './contacto.service';
+import { Contacto } from './contacto';
 
 
 //seguir desde min 70 sesion 2 dia 1
@@ -10,7 +11,7 @@ import { ContactoService } from './contacto.service'
 })
 export class AppComponent {
   private _title: string;
-  private _listaContactos: string[];
+  private _listaContactos: Contacto[];
 
   //Hago la inyeccion de dependencias de mi servicio con modificador de acceso + variable + tipo que sera
   //mi servicio, y ya podre hacer uso de los métodos de mi servicio.
@@ -22,7 +23,8 @@ export class AppComponent {
   }
 
   //Defino en el padre el manejador que se ejecutara cuando se de el evento emitido por el hijo
-  eliminarContactoSeleccionado(contacto: string): void {
+  eliminarContactoSeleccionado(contacto: Contacto): void {
+    if(confirm(`Esta seguro que desea elminar a ${contacto.nombre}`))
     this._contactoService.eliminarContacto(contacto);
     this._listaContactos = this._contactoService.obtenerContactos();
   }
