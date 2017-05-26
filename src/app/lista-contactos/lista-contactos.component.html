@@ -3,6 +3,7 @@
 <!--ngFor itera por una coleccion dada en este caso contactos-->
 <ul>
   <li *ngFor="let contacto of contactos">
-    <span (click)="notificarContactoSeleccionado(contacto)">{{ contacto }}</span>
+    <span>{{ contacto }}</span>
+    <button  (click)="notificarEliminacionContacto(contacto)">Eliminar</button>
   </li>
 </ul>

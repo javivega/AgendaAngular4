@@ -22,7 +22,8 @@ export class AppComponent {
   }
 
   //Defino en el padre el manejador que se ejecutara cuando se de el evento emitido por el hijo
-  mostrarContactoSeleccionado(contacto: string): void {
-    alert(`El contacto seleccionado es: ${contacto}`);
+  eliminarContactoSeleccionado(contacto: string): void {
+    this._contactoService.eliminarContacto(contacto);
+    this._listaContactos = this._contactoService.obtenerContactos();
   }
 }

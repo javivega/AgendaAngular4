@@ -6,12 +6,19 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class ContactoService {
 
-  obtenerContactos(): string[] {
-    return [
+  private _contactos: string[] = [
       'Elon Musk',
       'Tim Cook',
       'Bill Gates'
     ]
+
+  obtenerContactos(): string[] {
+    return this._contactos
+  }
+
+  //Un delete no debe devolver nada en el cuerpo de la respuesta por eso es un void
+  eliminarContacto(contacto: string): void {
+    this._contactos = this._contactos.filter((c: string): boolean => c !== contacto)
   }
 
 }

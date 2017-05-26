@@ -13,6 +13,6 @@ manejador (que defino en el padre) que haga que ocurra algo cuando suceda dicho 
 <!-- Le paso via atributo mi lista de contactos al hijo -->
 <lista-contactos 
   [contactos]="_listaContactos"
-  (contactoSeleccionado)="mostrarContactoSeleccionado($event)"
+  (contactoSeleccionado)="eliminarContactoSeleccionado($event)"
 >
 </lista-contactos>
