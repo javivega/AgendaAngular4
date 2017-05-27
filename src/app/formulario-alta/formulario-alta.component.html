@@ -4,6 +4,29 @@ un contacto, y sera este por medio de la inyeccion de dependencias que tiene del
 en todos los puntos de mi app, que este componente no necesite saber nada de ellos solo que tiene que guardar y que sean los otros lo que seman que hay que hace con ellos
 -->
 <!--Lo que escriba en la caja de texto se va almacenar en un atributo llamado nombre-->
-<input type="text" [(ngModel)]="nombre">
-<!--Como voy a notificar tendre que exponer un output en mi formulario.ts un emisor de eventos-->
-<button (click)="notificarCreaccionContacto()">Guardar</button>
+
+<form ngForm #contacto="ngForm" (ngSubmit)="notificarCreaccionContacto(contacto)">
+    <div>
+        <label for="nombre">Nombre</label>
+        <input type="text" ngModel id="nombre" name="nombre" #nombre="ngModel" required minlength="3">
+    </div>
+    <div *ngIf="nombre.touched && nombre.invalid">El nombre es un campo obligatorio</div>
+    <div>
+        <label for="nombre">Email</label>
+        <input type="text" ngModel id="email" name="email">
+    </div>
+    <div>
+        <label for="movil">movil</label>
+        <input type="text" ngModel id="movil" name="movil">
+    </div>
+    <div>
+        <label for="facebook">Facebook</label>
+        <input type="text" ngModel id="facebook" name="facebook">
+    </div>
+    <div>
+        <label for="twitter">Twitter</label>
+        <input type="text" ngModel id="twitter" name="twitter">
+    </div>
+    <!--Como voy a notificar tendre que exponer un output en mi formulario.ts un emisor de eventos-->
+    <button type="submit" [disabled]="contacto.invalid">Guardar</button>
+</form>
