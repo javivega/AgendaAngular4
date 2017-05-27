@@ -1,3 +1,9 @@
 <!--Para en binding bidrireccional uso la dicrectiva ngmodel-->
+<!--De nuevo necesitamos abtraccion a datos, por tanto este formulario solo va a guardar y se va abstraer de todo lo demas, solo comunicará al padre que se ha guardado
+un contacto, y sera este por medio de la inyeccion de dependencias que tiene del servicio el que dira lo que hay que hacer, es muy importante la abstracción a datos 
+en todos los puntos de mi app, que este componente no necesite saber nada de ellos solo que tiene que guardar y que sean los otros lo que seman que hay que hace con ellos
+-->
+<!--Lo que escriba en la caja de texto se va almacenar en un atributo llamado nombre-->
 <input type="text" [(ngModel)]="nombre">
-<button>Guardar</button>
+<!--Como voy a notificar tendre que exponer un output en mi formulario.ts un emisor de eventos-->
+<button(click)="notificarCreaccionContacto()">Guardar</button>
