@@ -28,4 +28,11 @@ export class AppComponent {
     this._contactoService.eliminarContacto(contacto);
     this._listaContactos = this._contactoService.obtenerContactos();
   }
+
+    alCrearContacto(contacto: Contacto): void{
+    this._contactoService.crearContacto(contacto);
+    this._listaContactos = this._contactoService.obtenerContactos();
+  }
+
 }
+

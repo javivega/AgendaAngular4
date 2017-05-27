@@ -22,4 +22,8 @@ export class ContactoService {
     this._contactos = this._contactos.filter((c: Contacto): boolean => c.nombre !== contacto.nombre)
   }
 
+  crearContacto(contacto: Contacto): void {
+    this._contactos.push(contacto);
+  }
+
 }
