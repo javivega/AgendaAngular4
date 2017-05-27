@@ -9,20 +9,24 @@ import { ContactoService } from '../contacto.service';
   styleUrls: ['./nuevo-contacto.component.css']
 })
 export class NuevoContactoComponent implements OnInit {
-  
-  
-constructor( 
-  private _contactoService: ContactoService,
-  private _router: Router 
-  ){}
+
+
+  constructor(
+    private _contactoService: ContactoService,
+    private _router: Router
+  ) { }
 
   ngOnInit() {
   }
 
- alCrearContacto(contacto: Contacto): void{
-    this._contactoService.crearContacto(contacto);
-    alert('Contacto creado correctamente');
-    this._router.navigate(['mis-contactos']);
-  }
+  alCrearContacto(contacto: Contacto): void {
+    this._contactoService
+      .crearContacto(contacto)
+      .subscribe((nuevoContacto: Contacto) => {
+          alert(`el contacto ${nuevoContacto.nombre} se ha creado correctamente`);
+          this._router.navigate(['mis-contactos']);
+
+  });
+}
   
 }

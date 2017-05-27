@@ -14,7 +14,11 @@ export class MisContactosComponent implements OnInit {
   constructor( private _contactoService: ContactoService ){
     //Obtento mis cntactos con el metodo del servicio que me los devuelve y se los paso al hijo via template
     //atribute
-    this._listaContactos = this._contactoService.obtenerContactos();
+    this._contactoService
+      .obtenerContactos()
+      .subscribe((contactos: Contacto[])=> {
+        this._listaContactos = contactos;
+      });
   }
 
   ngOnInit() {
@@ -23,6 +27,6 @@ export class MisContactosComponent implements OnInit {
    eliminarContactoSeleccionado(contacto: Contacto): void {
     if(confirm(`Esta seguro que desea elminar a ${contacto.nombre}`))
     this._contactoService.eliminarContacto(contacto);
-    this._listaContactos = this._contactoService.obtenerContactos();
+    //this._listaContactos = this._contactoService.obtenerContactos();
   }
 }
