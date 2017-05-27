@@ -1,20 +1,14 @@
 <h1>
-  {{_title}}
+ Super Agenda
 </h1>
 
-<formulario-alta (alCrearContacto)="alCrearContacto($event)"></formulario-alta>
-<!-- Podemos instanciar en la vista del componente padre al componente hijo, 
-y este ira con toda la logica asociada exactamente igual que react. Esta etiqueta responde al selector
-del componente -->
-<!-- Puesto pasar valores de mi componente padre a mi componente hijo via atributos, al ser hacia abajo
-de padre ha hijo, pero para ello dicha variable la tengo que decorar con un @input en el componente hijo
-para indicar que en ese variable entrand datos-->
-<!-- para comunicar con datos del hijo necesito subscribirme al evento declarado en el hijo con el Output
-que declare como EventEmitter, la subscripcion a un evento se hace entre parentesis, y necesito luego un
-manejador (que defino en el padre) que haga que ocurra algo cuando suceda dicho evento. -->
-<!-- Le paso via atributo mi lista de contactos al hijo -->
-<lista-contactos 
-  [contactos]="_listaContactos"
-  (contactoSeleccionado)="eliminarContactoSeleccionado($event)"
->
-</lista-contactos>
+<nav>
+  <ul>
+    <li><a routerLink="mis-contactos">Mis Contactos</a></li>
+    <li><a routerLink="nuevo-contacto">Nuevo Contacto</a></li>
+  </ul>
+</nav>
+
+<router-outlet></router-outlet>
+
+
