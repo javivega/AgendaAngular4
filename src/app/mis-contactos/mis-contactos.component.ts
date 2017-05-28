@@ -26,7 +26,13 @@ export class MisContactosComponent implements OnInit {
 
    eliminarContactoSeleccionado(contacto: Contacto): void {
     if(confirm(`Esta seguro que desea elminar a ${contacto.nombre}`))
-    this._contactoService.eliminarContacto(contacto);
-    //this._listaContactos = this._contactoService.obtenerContactos();
+    this._contactoService
+      .eliminarContacto(contacto)
+      .subscribe((contactoEliminado: Contacto) => {
+        this._listaContactos = this._listaContactos.filter((c: Contacto): boolean => {
+          return c.id !== contactoEliminado.id;
+        })
+      });
+   
   }
 }

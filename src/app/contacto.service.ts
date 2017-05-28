@@ -10,11 +10,6 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class ContactoService {
 
-  private _contactos: Contacto[] = [
-    new Contacto('Elon Musk'),
-    new Contacto('Tim Cook'),
-    new Contacto('Bill Gates')
-  ]
 
   constructor(private _http: Http) { }
 
@@ -36,7 +31,12 @@ export class ContactoService {
   }
 
   //Un delete no debe devolver nada en el cuerpo de la respuesta por eso es un void
-  eliminarContacto(contacto: Contacto): void {
-    this._contactos = this._contactos.filter((c: Contacto): boolean => c.nombre !== contacto.nombre)
+  eliminarContacto(contacto: Contacto): Observable<Contacto> {
+    //this._contactos = this._contactos.filter((c: Contacto): boolean => c.nombre !== contacto.nombre)
+   return this._http
+        .delete(`http://localhost:3004/contactos/${contacto.id} `)
+          .map(() => {
+            return contacto;
+          });
   }
 }
