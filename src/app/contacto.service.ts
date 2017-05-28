@@ -1,8 +1,9 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { Contacto } from './contacto';
 import { Http, Response} from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Observable';
+import { ApiUrl } from './configuracion';
 
 
 //Con el @injectable consguimos que esta clase se convierta en un servicio y
@@ -11,11 +12,13 @@ import { Observable } from 'rxjs/Observable';
 export class ContactoService {
 
 
-  constructor(private _http: Http) { }
+  constructor(
+    private _http: Http,
+    @Inject(ApiUrl) private _apiUrl) { }
 
   obtenerContactos(): Observable<Contacto[]> {
     return this._http
-              .get('http://localhost:3004/contactos')
+              .get(`${this._apiUrl}/contactos`)
               .map((respuesta: Response) => {
                 return respuesta.json() as Contacto[];
               })
@@ -24,7 +27,7 @@ export class ContactoService {
 
   crearContacto(contacto: Contacto): Observable<Contacto>{
     return this._http
-                .post('http://localhost:3004/contactos', contacto)
+                .post(`${this._apiUrl}/contactos`, contacto)
                 .map((respuesta: Response) => {
                   return respuesta.json() as Contacto
                 })
@@ -34,7 +37,7 @@ export class ContactoService {
   eliminarContacto(contacto: Contacto): Observable<Contacto> {
     //this._contactos = this._contactos.filter((c: Contacto): boolean => c.nombre !== contacto.nombre)
    return this._http
-        .delete(`http://localhost:3004/contactos/${contacto.id} `)
+        .delete(`${this._apiUrl}/contactos/${contacto.id} `)
           .map(() => {
             return contacto;
           });

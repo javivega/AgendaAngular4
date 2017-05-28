@@ -9,6 +9,7 @@ import { FormularioAltaComponent } from './formulario-alta/formulario-alta.compo
 import { AppRoutingModule} from './app-routing/app-routing.module';
 import { MisContactosComponent } from './mis-contactos/mis-contactos.component';
 import { NuevoContactoComponent } from './nuevo-contacto/nuevo-contacto.component'
+import { ApiUrlProvider } from './configuracion';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,10 @@ import { NuevoContactoComponent } from './nuevo-contacto/nuevo-contacto.componen
     HttpModule,
     AppRoutingModule
   ],
-  providers: [ContactoService],
+  providers: [
+    ContactoService,
+    ApiUrlProvider
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

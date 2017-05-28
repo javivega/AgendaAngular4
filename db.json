@@ -1,12 +1,20 @@
 {
   "contactos": [
     {
-      "nombre": "miguel",
+      "nombre": "Miguel",
+      "email": "miguel@gmail.com",
+      "movil": "615313180",
+      "facebook": "miguel",
+      "twitter": "@imguel",
+      "id": 2
+    },
+    {
+      "nombre": "Jose",
       "email": "",
       "movil": "",
       "facebook": "",
       "twitter": "",
-      "id": 1
+      "id": 3
     }
   ]
 }
